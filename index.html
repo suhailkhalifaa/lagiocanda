@@ -103,6 +103,14 @@
   </div>
 
   </footer>
-
+<script>
+ 
+    // Disable right-click context menu across all images
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+</script>
 </body>
 </html>
