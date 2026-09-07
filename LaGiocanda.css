@@ -1,0 +1,323 @@
+:root {
+  /* Minimalist warm light brown / neutral palette */
+  --bg-color: #ffffff;
+  --text-color: #2b2725;
+  --muted-text: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enable smooth scrolling across anchor jumps */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* Fixed Header — Top Left */
+.top-header {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 20;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Fixed Navigation Bar — Top Right */
+.top-nav {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 20;
+}
+
+.top-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: var(--muted-text);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+.top-nav a:hover {
+  color: var(--text-color);
+}
+
+/* Enlarged Introduction Section (Hero) */
+.hero-intro {
+  min-height: 85vh; /* Provides plenty of scroll distance down to sketch 1 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+}
+
+.hero-content {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-content h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.hero-lead {
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  line-height: 1.5;
+  color: var(--text-color);
+  font-weight: 400;
+}
+
+.hero-body {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+/* Main Gallery Area */
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rem;
+  padding: 4rem 2rem 8rem;
+}
+
+/* Offset for jumping directly to Sketch 1 below fixed header */
+#sketch-1 {
+  scroll-margin-top: 6rem;
+}
+
+/* Dynamic Scroll Cards */
+.sketch-card {
+  width: min(80vw, 700px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  /* Native CSS Scroll Animation */
+  animation: scale-in-out linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 50%;
+}
+
+.sketch-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.sketch-card figcaption {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-text);
+}
+
+@keyframes scale-in-out {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Bottom Container (About & Contact) */
+.footer-container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 6rem 2rem 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.page-section {
+  scroll-margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.page-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.page-section p {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
+/* Two-Column About Section */
+.about-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.about-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Square Profile Photo */
+.about-photo {
+  width: 180px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Contact Link */
+.email-link {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .top-header,
+  .top-nav {
+    top: 1.25rem;
+  }
+
+  .top-header {
+    left: 1.25rem;
+  }
+
+  .top-nav {
+    right: 1.25rem;
+  }
+
+  .hero-intro {
+    min-height: 70vh;
+    padding-top: 7rem;
+  }
+
+/* 2-Column Grid: Text takes all remaining space (1fr), Photo takes exactly 180px */
+.about-section {
+  display: grid !important;
+  grid-template-columns: 1fr 300px !important;
+  align-items: center !important;
+  gap: 3rem !important;
+  width: 100% !important;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Hard-locked square locked to the far right column */
+.about-photo-wrapper {
+  width: 300px !important;
+  height: 300px !important;
+  justify-self: end !important; /* Pins to far right */
+  overflow: hidden !important;
+  border-radius: 2px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.about-photo-wrapper img,
+.about-photo {
+  width: 300px !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* 1. Prevent dragging and highlighting on artwork & photos */
+.sketch-card img,
+.about-photo {
+  -webkit-user-select: none; /* Safari */
+  user-select: none;         /* Standard */
+  -webkit-user-drag: none;   /* Chrome / Safari drag prevention */
+}
+
+/* 2. Copyright notice styling at the bottom */
+.copyright-notice {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.copyright-notice p {
+  font-size: 0.8rem;
+  color: var(--muted-text);
+  letter-spacing: 0.03em;
+}
+
+.copyright-subtext {
+  font-size: 0.72rem;
+  opacity: 0.75;
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .about-section {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .about-photo-wrapper {
+    justify-self: start !important;
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .about-photo-wrapper img,
+  .about-photo {
+    width: 140px !important;
+    height: 140px !important;
+  }
+}
+}
