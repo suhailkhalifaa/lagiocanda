@@ -1,8 +1,9 @@
-:root {
+  :root {
   /* Minimalist warm light brown / neutral palette */
-  --bg-color: #f24881;
-  --text-color: #ffcc40;
-  --muted-text: #8dc6c3;
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --muted-text: #ffffff;
+}
 }
 
 * {
