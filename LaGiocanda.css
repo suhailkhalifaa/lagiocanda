@@ -1,9 +1,8 @@
-  :root {
-  /* Minimalist warm light brown / neutral palette */
+:root {
+  /* Minimalist black and white/ neutral palette */
   --bg-color: #000000;
   --text-color: #ffffff;
   --muted-text: #ffffff;
-}
 }
 
 * {
@@ -67,7 +66,7 @@ body {
 
 /* Enlarged Introduction Section (Hero) */
 .hero-intro {
-  min-height: 85vh; /* Provides plenty of scroll distance down to sketch 1 */
+  min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,6 +134,11 @@ body {
   object-fit: cover;
   border-radius: 2px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+  /* Prevent dragging and highlighting */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .sketch-card figcaption {
@@ -149,13 +153,14 @@ body {
     transform: scale(0.85);
     opacity: 0.35;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
   }
 }
 
-/* Bottom Container (About & Contact) */
+/* Bottom Container — About & Contact */
 .footer-container {
   max-width: 850px;
   margin: 0 auto;
@@ -165,6 +170,7 @@ body {
   gap: 6rem;
 }
 
+/* General Page Sections */
 .page-section {
   scroll-margin-top: 6rem;
   display: flex;
@@ -184,29 +190,17 @@ body {
   color: var(--muted-text);
 }
 
-/* Two-Column About Section */
+/* About Section — Text Only */
 .about-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-}
-
-.about-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-/* Square Profile Photo */
-.about-photo {
-  width: 180px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 2px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 /* Contact Link */
@@ -215,6 +209,30 @@ body {
   font-size: 0.9rem;
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+/* Copyright Notice */
+.copyright-notice {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.copyright-notice p {
+  font-size: 0.8rem;
+  color: var(--muted-text);
+  letter-spacing: 0.03em;
+}
+
+.copyright-subtext {
+  font-size: 0.72rem;
+  opacity: 0.75;
+  max-width: 50ch;
+  margin: 0 auto;
 }
 
 /* Responsive Adjustments */
@@ -237,88 +255,8 @@ body {
     padding-top: 7rem;
   }
 
-/* 2-Column Grid: Text takes all remaining space (1fr), Photo takes exactly 180px */
-.about-section {
-  display: grid !important;
-  grid-template-columns: 1fr 300px !important;
-  align-items: center !important;
-  gap: 3rem !important;
-  width: 100% !important;
-}
-
-.about-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-/* Hard-locked square locked to the far right column */
-.about-photo-wrapper {
-  width: 300px !important;
-  height: 300px !important;
-  justify-self: end !important; /* Pins to far right */
-  overflow: hidden !important;
-  border-radius: 2px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-}
-
-.about-photo-wrapper img,
-.about-photo {
-  width: 300px !important;
-  height: 300px !important;
-  object-fit: cover !important;
-  display: block !important;
-}
-
-/* 1. Prevent dragging and highlighting on artwork & photos */
-.sketch-card img,
-.about-photo {
-  -webkit-user-select: none; /* Safari */
-  user-select: none;         /* Standard */
-  -webkit-user-drag: none;   /* Chrome / Safari drag prevention */
-}
-
-/* 2. Copyright notice styling at the bottom */
-.copyright-notice {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  text-align: center;
-}
-
-.copyright-notice p {
-  font-size: 0.8rem;
-  color: var(--muted-text);
-  letter-spacing: 0.03em;
-}
-
-.copyright-subtext {
-  font-size: 0.72rem;
-  opacity: 0.75;
-  max-width: 50ch;
-  margin: 0 auto;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .about-section {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
+  .footer-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
-
-  .about-photo-wrapper {
-    justify-self: start !important;
-    width: 140px !important;
-    height: 140px !important;
-  }
-
-  .about-photo-wrapper img,
-  .about-photo {
-    width: 140px !important;
-    height: 140px !important;
-  }
-}
 }
